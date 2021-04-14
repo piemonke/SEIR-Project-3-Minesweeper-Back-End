@@ -29,7 +29,7 @@ app.use(morgan("dev"));
 app.use(express.json());
 app.use(cors());
 
-app.use("/api/board", require("./routes/api/board"));
+app.use("/api/board", require("./routes/api/boards"));
 
 app.listen(port, function() {
     console.log(`Express is listening for AJAX requests on port ${port}`);
