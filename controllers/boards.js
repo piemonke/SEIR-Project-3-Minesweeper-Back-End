@@ -23,9 +23,12 @@ async function returnTilesArray(req, res) {
 
     //get array of tiles by board._id
     let board = await Board.findById(req.body.id);
-    console.log(board);
-    //find starting tile by tile
 
+    //find starting tile by tile
+    
+    let tiles = board.tiles;
+    let tile = tiles.find(tile => tile.tIndex === req.body.tile);
+    console.log(tile);
     //if tile is mine, return lose condition
 
     //else
