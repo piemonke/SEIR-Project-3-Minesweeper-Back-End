@@ -7,7 +7,6 @@ dotenv.config();
 
 const port = process.env.PORT || 3001;
 const connectionURI = process.env.MONGODB_URI;
-const frontEndURI = process.env.FRONTEND_URI;
 
 const mongoose = require("mongoose");
 
