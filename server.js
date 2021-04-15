@@ -7,7 +7,7 @@ dotenv.config();
 
 const port = process.env.PORT || 3001;
 const connectionURI = process.env.MONGODB_URI;
-const corsURI = process.env.FRONTEND_URI
+const corsURI = process.env.FRONTEND_URI;
 
 const mongoose = require("mongoose");
 
@@ -26,7 +26,7 @@ db.on("connected", function() {
 
 const app = express();
 
-app.use(cors());
+app.use(cors({origin: corsURI}));
 app.use(morgan("dev"));
 app.use(express.json());
 
