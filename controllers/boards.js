@@ -2,6 +2,7 @@ const Board = require("../models/board");
 
 module.exports = {
     boardData,
+    returnTilesArray,
 }
 
 //accept board creation data from front end and send to mongodb
@@ -15,4 +16,8 @@ async function boardData(req, res) {
         res.status(401).json({error: error});
     }
     
+}
+
+function returnTilesArray(req, res) {
+    console.log(req.body);
 }
