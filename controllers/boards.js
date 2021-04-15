@@ -49,27 +49,27 @@ async function returnTilesArray(req, res) {
 
 //recursive function, needs to be in scope with tiles array
 function getTileIndexes(allTiles, tileCoords) {
-    console.log("");
-    console.log("")
-    console.log("new iteration of recursion");
-    console.log("tile coordinates are", tileCoords);
+    // console.log("");
+    // console.log("")
+    // console.log("new iteration of recursion");
+    // console.log("tile coordinates are", tileCoords);
 
     let currentTile = allTiles.find(tile => tile.coord.x === tileCoords.x
         && tile.coord.y === tileCoords.y);
     let calcIndex = allTiles.indexOf(currentTile);
-    allTiles.splice(calcIndex, 1);
-    console.log("current tile is", currentTile);
+    // console.log("current tile is", currentTile);
     // console.log("next tile is ", nextTile);
-
+    
     
     if(currentTile) {
         //if tile number of nearby mines is > 0
         if(currentTile.nearby > 0) {
-            console.log("end recursion");
+            // console.log("end recursion");
             //return tile index
             return [currentTile.tIndex];
             //else
         } else {
+            allTiles.splice(calcIndex, 1);
             //return spread array of nearby tiles
             // return getTileIndexes(allTiles, {x: tileCoords.x - 1, y: tileCoords.y - 1});
             return [
