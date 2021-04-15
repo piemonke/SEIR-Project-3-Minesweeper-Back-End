@@ -7,7 +7,7 @@ function routerPath() {
     
 
     //POST requests
-    router.post("/board", boardCtrl.boardData)
+    router.post("/create", boardCtrl.boardData)
 
     return router;
 }

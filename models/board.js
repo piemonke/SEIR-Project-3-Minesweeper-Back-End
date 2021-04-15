@@ -2,12 +2,11 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const tileSchema = new Schema({
-    index: Number,
-    xCoord: Number,
-    yCoord: Number,
+    tIndex: Number,
+    coord: {x: Number, y: Number},
     mine: Boolean,
-    adjacentMines: Number,
-})
+    nearby: Number,
+});
 
 const boardSchema = new Schema({
     tiles: [tileSchema]

@@ -25,9 +25,9 @@ db.on("connected", function() {
 
 const app = express();
 
+app.use(cors());
 app.use(morgan("dev"));
 app.use(express.json());
-app.use(cors());
 
 app.use("/api/board", require("./routes/api/boards"));
 
