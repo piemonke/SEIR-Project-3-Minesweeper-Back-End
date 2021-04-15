@@ -29,7 +29,8 @@ const app = express();
 
 app.use(morgan("dev"));
 app.use(express.json());
-app.use(cors({origin: "https://flubbsweeper-front-end.herokuapp.com/"}))
+app.use(cors({origin: "https://flubbsweeper-front-end.herokuapp.com/"}));
+app.options("/api/board", cors({origin: "https://flubbsweeper-front-end.herokuapp.com/"}));
 
 app.use("/api/board", require("./routes/api/boards"));
 
