@@ -18,6 +18,21 @@ async function boardData(req, res) {
     
 }
 
-function returnTilesArray(req, res) {
-    console.log(req.body);
+async function returnTilesArray(req, res) {
+    // console.log(req.body);
+
+    //get array of tiles by board._id
+    let board = await Board.findById(req.body.id);
+    console.log(board);
+    //find starting tile by tile
+
+    //if tile is mine, return lose condition
+
+    //else
+
+    //create array of tile indexes
+
+    //recur through tiles until tile.nearby is not 0, add tiles indexes to array
+
+    //return array
 }
