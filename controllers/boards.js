@@ -19,6 +19,8 @@ async function boardData(req, res) {
 }
 
 async function returnTilesArray(req, res) {
+    
+
     // console.log(req.body);
 
     //get array of tiles by board._id
@@ -28,14 +30,62 @@ async function returnTilesArray(req, res) {
     
     let tiles = board.tiles;
     let tile = tiles.find(tile => tile.tIndex === req.body.tile);
-    console.log(tile);
+    // console.log(tile);
     //if tile is mine, return lose condition
-
-    //else
+    if(tile.mine) {
+        let lose = [];
+        res.status(200).json(lose);
+    } else {
+        let indexes = getTileIndexes(tiles, tile.coord);
+        console.log("array containts", indexes);
+    }
 
     //create array of tile indexes
 
     //recur through tiles until tile.nearby is not 0, add tiles indexes to array
 
     //return array
+}
+
+//recursive function, needs to be in scope with tiles array
+function getTileIndexes(allTiles, tileCoords) {
+    console.log("");
+    console.log("")
+    console.log("new iteration of recursion");
+    console.log("tile coordinates are", tileCoords);
+
+    let currentTile = allTiles.find(tile => tile.coord.x === tileCoords.x
+        && tile.coord.y === tileCoords.y);
+    let calcIndex = allTiles.indexOf(currentTile);
+    allTiles.splice(calcIndex, 1);
+    console.log("current tile is", currentTile);
+    // console.log("next tile is ", nextTile);
+
+    
+    if(currentTile) {
+        //if tile number of nearby mines is > 0
+        if(currentTile.nearby > 0) {
+            console.log("end recursion");
+            //return tile index
+            return [currentTile.tIndex];
+            //else
+        } else {
+            //return spread array of nearby tiles
+            // return getTileIndexes(allTiles, {x: tileCoords.x - 1, y: tileCoords.y - 1});
+            return [
+                currentTile.tIndex,
+                ...getTileIndexes(allTiles, {x: tileCoords.x - 1, y: tileCoords.y - 1}),
+                ...getTileIndexes(allTiles, {x: tileCoords.x - 1, y: tileCoords.y}),
+                ...getTileIndexes(allTiles, {x: tileCoords.x - 1, y: tileCoords.y + 1}),
+                ...getTileIndexes(allTiles, {x: tileCoords.x, y: tileCoords.y - 1}),
+                ...getTileIndexes(allTiles, {x: tileCoords.x, y: tileCoords.y + 1}),
+                ...getTileIndexes(allTiles, {x: tileCoords.x + 1, y: tileCoords.y - 1}),
+                ...getTileIndexes(allTiles, {x: tileCoords.x + 1, y: tileCoords.y}),
+                ...getTileIndexes(allTiles, {x: tileCoords.x + 1, y: tileCoords.y + 1})
+            ];
+        }
+    } else {
+        return [];
+    }
+    
 }
