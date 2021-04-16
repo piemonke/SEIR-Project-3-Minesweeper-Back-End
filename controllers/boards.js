@@ -33,8 +33,8 @@ async function returnTilesArray(req, res) {
     // console.log(tile);
     //if tile is mine, return lose condition
     if(tile.mine) {
-        let lose = [];
-        res.status(200).json(lose);
+        let indexes = [];
+        res.status(200).json({tiles: indexes});
     } else {
         let indexes = getTileIndexes(tiles, tile.coord);
         console.log("array containts", indexes);
