@@ -94,7 +94,7 @@ function getTileIndexes(allTiles, tileCoords) {
 
 //function to translate tile indexes into tiles
 //send tiles data back so front end can use it for rendering
-async function indexTileData(indexes, tiles) {
-    let tiles = await indexes.map(index => tiles.find(tile => tile.tIndex === index));
-    return tiles;
-}
+// async function indexTileData(indexes, tiles) {
+//     let tiles = await indexes.map(index => tiles.find(tile => tile.tIndex === index));
+//     return tiles;
+// }
