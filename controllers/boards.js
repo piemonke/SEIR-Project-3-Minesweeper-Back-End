@@ -38,7 +38,7 @@ async function returnTilesArray(req, res) {
     } else {
         let indexes = getTileIndexes(tiles, tile.coord);
         // console.log("array containts", indexes);
-        indexes = indexTileData(indexes, tiles);
+        // indexes = indexTileData(indexes, tiles);
         res.status(200).json({tiles: indexes});
     }
 
