@@ -38,7 +38,7 @@ async function returnTilesArray(req, res) {
     } else {
         let indexes = getTileIndexes(tiles, tile.coord);
         // console.log("array containts", indexes);
-        indexes = indexTileData(indexes);
+        indexes = indexTileData(indexes, tiles);
         res.status(200).json({tiles: indexes});
     }
 
@@ -94,7 +94,7 @@ function getTileIndexes(allTiles, tileCoords) {
 
 //function to translate tile indexes into tiles
 //send tiles data back so front end can use it for rendering
-async function indexTileData(indexes) {
-    let tiles = await indexes.map(index => Board.tiles.find(tile => tile.tIndex === index));
+async function indexTileData(indexes, tiles) {
+    let tiles = await indexes.map(index => tiles.find(tile => tile.tIndex === index));
     return tiles;
 }
